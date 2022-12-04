@@ -1,3 +1,4 @@
+#if DEBUG
 import Combine
 
 extension WeatherClient {
@@ -9,3 +10,4 @@ extension WeatherClient {
     )
   }
 }
+#endif
