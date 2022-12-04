@@ -1,0 +1,33 @@
+{
+  "configurations" : [
+    {
+      "id" : "911480B0-B8EC-4AE0-9241-0708F7B36FE8",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Weather-TCA\/Feature",
+        "identifier" : "CitySearchTests",
+        "name" : "CitySearchTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Weather-TCA\/SDK",
+        "identifier" : "WeatherSDKTests",
+        "name" : "WeatherSDKTests"
+      }
+    }
+  ],
+  "version" : 1
+}

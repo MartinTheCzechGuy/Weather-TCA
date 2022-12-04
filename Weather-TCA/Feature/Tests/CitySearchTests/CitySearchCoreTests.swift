@@ -24,15 +24,18 @@ final class CitySearchCoreTests: XCTestCase {
 
     let sut = TestStore(
       initialState: CitySearchFeature.State(cityName: ""),
-      reducer: CitySearchFeature()
+      reducer: CitySearchFeature(
+        weatherClient: .mock(
+          fetchWeather: { _ in
+            Just(weather)
+              .setFailureType(to: WeatherError.self)
+              .eraseToAnyPublisher()
+          }
+        )
+      )
     )
 
     sut.dependencies.mainQueue = testScheduler.eraseToAnyScheduler()
-    sut.dependencies.weatherClient.fetchWeather = { _ in
-      Just(weather)
-        .setFailureType(to: WeatherError.self)
-        .eraseToAnyPublisher()
-    }
 
     sut.send(.searchTap)
     testScheduler.advance()
@@ -48,7 +51,9 @@ final class CitySearchCoreTests: XCTestCase {
   func test_sut_should_update_searched_city_name_on_new_value() {
     let sut = TestStore(
       initialState: CitySearchFeature.State(cityName: ""),
-      reducer: CitySearchFeature()
+      reducer: CitySearchFeature(
+        weatherClient: .mock()
+      )
     )
 
     sut.send(.nameChanged("P")) { state in
@@ -62,7 +67,9 @@ final class CitySearchCoreTests: XCTestCase {
 
     let sut = TestStore(
       initialState: state,
-      reducer: CitySearchFeature()
+      reducer: CitySearchFeature(
+        weatherClient: .mock()
+      )
     )
 
     sut.send(.cityDetail(.backTap))

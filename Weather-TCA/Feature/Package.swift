@@ -28,6 +28,7 @@ let package = Package(
       name: "CityDetail",
       dependencies: [
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        .product(name: "UIToolkit", package: "Infrastructure"),
         .product(name: "WeatherSDK", package: "SDK"),
       ]
     ),

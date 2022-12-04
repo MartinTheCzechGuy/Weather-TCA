@@ -1,16 +1,17 @@
+import UIToolkit
 import SwiftUI
 import WeatherSDK
 
 extension WeatherCode {
-  var icon: String {
+  var icon: Image {
     switch self {
-    case .thunderstorm: return "thunderstorm"
-    case .drizzle: return "drizzle"
-    case .rain: return "rain"
-    case .snow: return "snow"
-    case .mist: return "mist"
-    case .clear: return "clear"
-    case .clouds: return "clouds"
+    case .thunderstorm: return Assets.Images.thunderstorm
+    case .drizzle: return Assets.Images.drizzle
+    case .rain: return Assets.Images.rain
+    case .snow: return Assets.Images.snow
+    case .mist: return Assets.Images.mist
+    case .clear: return Assets.Images.clear
+    case .clouds: return Assets.Images.clouds
     }
   }
 

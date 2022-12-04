@@ -1,16 +1,17 @@
 import ComposableArchitecture
+import UIToolkit
 import SwiftUI
 import WeatherSDK
 
 public extension CityDetailFeature {
   struct MainView: View {
-
+    
     let store: StoreOf<CityDetailFeature>
-
+    
     public init(store: StoreOf<CityDetailFeature>) {
       self.store = store
     }
-
+    
     struct ViewState: Equatable {
       let weatherCode: WeatherCode
       let description: String
@@ -18,24 +19,24 @@ public extension CityDetailFeature {
       let pressure: String
       let humidity: String
       let city: String
-
+      
       init(state: CityDetailFeature.State) {
         self.weatherCode = state.weather.weather
         self.description = state.weather.description
         self.city = state.weather.city
-
+        
         let formatter = MeasurementFormatter()
         formatter.unitOptions = .providedUnit
-
+        
         let numberFormatter = NumberFormatter()
         numberFormatter.maximumFractionDigits = 1
         formatter.numberFormatter = numberFormatter
-
+        
         let temperatureMeasurement = Measurement(
           value: state.weather.temperature,
           unit: UnitTemperature.celsius
         )
-
+        
         let pressureMeasurement = Measurement(
           value: state.weather.pressure,
           unit: UnitPressure.hectopascals
@@ -45,40 +46,39 @@ public extension CityDetailFeature {
         self.humidity = String(format: "%.1f", state.weather.humidity)
       }
     }
-
+    
     public var body: some View {
       WithViewStore(store.scope(state: ViewState.init(state:)), observe: { $0 }) { viewStore in
         ZStack {
           viewStore.weatherCode.background
             .ignoresSafeArea()
-
+          
           VStack(
             alignment: .center,
             spacing: 20
           ) {
             Text("Current weather in \(viewStore.city)")
               .font(.title)
-
+            
             Text(viewStore.description)
               .font(.title2)
-
+            
             Spacer()
-
-            Image(viewStore.weatherCode.icon)
+            
+            viewStore.weatherCode.icon
               .resizable()
               .aspectRatio(contentMode: .fit)
               .frame(width: 150, height: 150)
-
+            
             Spacer()
-
+            
             VStack(spacing: 10) {
               Text("🌡 Temperature is \(viewStore.temperature)")
               Text("Pressure is \(viewStore.pressure)")
               Text("💧 Humidity is \(viewStore.humidity) %")
             }
             .font(.title3)
-            .foregroundColor(viewStore.weatherCode.fontColor)
-
+            
             Spacer()
           }
         }
@@ -91,11 +91,11 @@ public extension CityDetailFeature {
               label: {
                 Image(systemName: "xmark")
                   .imageScale(.large)
-                  .foregroundColor(viewStore.weatherCode.fontColor)
               }
             )
           }
         }
+        .foregroundColor(viewStore.weatherCode.fontColor)
       }
     }
   }

@@ -22,6 +22,7 @@
 		A6DC8816293CDF0200082CC0 /* Feature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Feature; sourceTree = "<group>"; };
 		A6DC8817293CDF0F00082CC0 /* SDK */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SDK; sourceTree = "<group>"; };
 		A6DC8818293CDF1F00082CC0 /* Infrastructure */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Infrastructure; sourceTree = "<group>"; };
+		A6DC881C293CE75100082CC0 /* Weather-TCA.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Weather-TCA.xctestplan"; path = "Weather-TCA/Weather-TCA.xctestplan"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +40,7 @@
 		A6DC87FA293CDEB200082CC0 = {
 			isa = PBXGroup;
 			children = (
+				A6DC881C293CE75100082CC0 /* Weather-TCA.xctestplan */,
 				A6DC8805293CDEB200082CC0 /* Weather-TCA */,
 				A6DC8804293CDEB200082CC0 /* Products */,
 				A6DC8819293CE17A00082CC0 /* Frameworks */,
