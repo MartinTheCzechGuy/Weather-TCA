@@ -1,5 +1,5 @@
 # Weather App
-Simple weather forecast app for cities all over the world.
+The Composable Architecture playground app. Simple weather forecast app for cities all over the world.
 
 <p>
   <img src="https://user-images.githubusercontent.com/43984788/205496976-e1d81d55-cc6c-4f6a-acaf-0ce228cd9d33.png" width="30%" height="30%">
